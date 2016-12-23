@@ -4,7 +4,7 @@
 #
 Name     : neon
 Version  : 1.7.0
-Release  : 9
+Release  : 10
 URL      : https://github.com/NervanaSystems/neon/archive/v1.7.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v1.7.0.tar.gz
 Summary  : No detailed summary available
