@@ -4,7 +4,7 @@
 #
 Name     : neon
 Version  : 1.8.0
-Release  : 13
+Release  : 14
 URL      : https://github.com/NervanaSystems/neon/archive/v1.8.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v1.8.0.tar.gz
 Summary  : No detailed summary available
@@ -49,13 +49,15 @@ python components for the neon package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1484554123
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
+export SOURCE_DATE_EPOCH=1484554123
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files
 %defattr(-,root,root,-)
