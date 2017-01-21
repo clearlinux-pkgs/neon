@@ -4,7 +4,7 @@
 #
 Name     : neon
 Version  : 1.8.1
-Release  : 15
+Release  : 16
 URL      : https://github.com/NervanaSystems/neon/archive/v1.8.1.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v1.8.1.tar.gz
 Summary  : No detailed summary available
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : Apache-2.0 MIT
 Requires: neon-bin
 Requires: neon-python
+Requires: neon-doc
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pluggy
@@ -36,6 +37,14 @@ Group: Binaries
 bin components for the neon package.
 
 
+%package doc
+Summary: doc components for the neon package.
+Group: Documentation
+
+%description doc
+doc components for the neon package.
+
+
 %package python
 Summary: python components for the neon package.
 Group: Default
@@ -49,15 +58,19 @@ python components for the neon package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1485014536
+export SOURCE_DATE_EPOCH=1485042902
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1485014536
+export SOURCE_DATE_EPOCH=1485042902
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+## make_install_append content
+mkdir -p %{buildroot}/usr/share/doc/neon
+cp -a examples  %{buildroot}/usr/share/doc/neon
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -66,6 +79,10 @@ python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 %defattr(-,root,root,-)
 /usr/bin/neon
 /usr/bin/nvis
+
+%files doc
+%defattr(-,root,root,-)
+%doc /usr/share/doc/neon/*
 
 %files python
 %defattr(-,root,root,-)
