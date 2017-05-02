@@ -4,7 +4,7 @@
 #
 Name     : neon
 Version  : 1.8.2
-Release  : 18
+Release  : 19
 URL      : http://github.com/NervanaSystems/neon/archive/v1.8.2.tar.gz
 Source0  : http://github.com/NervanaSystems/neon/archive/v1.8.2.tar.gz
 Summary  : No detailed summary available
