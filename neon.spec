@@ -4,15 +4,16 @@
 #
 Name     : neon
 Version  : 2.2.0
-Release  : 25
+Release  : 26
 URL      : https://github.com/NervanaSystems/neon/archive/v2.2.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v2.2.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0 MIT
 Requires: neon-bin
-Requires: neon-python
+Requires: neon-python3
 Requires: neon-doc
+Requires: neon-python
 Requires: Sphinx
 Requires: appdirs
 Requires: cffi
@@ -60,9 +61,19 @@ doc components for the neon package.
 %package python
 Summary: python components for the neon package.
 Group: Default
+Requires: neon-python3
 
 %description python
 python components for the neon package.
+
+
+%package python3
+Summary: python3 components for the neon package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the neon package.
 
 
 %prep
@@ -73,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506570129
+export SOURCE_DATE_EPOCH=1507160440
 python3 setup.py build -b py3
 
 %install
@@ -100,5 +111,8 @@ cp -a examples  %{buildroot}/usr/share/doc/neon
 %doc /usr/share/doc/neon/*
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
