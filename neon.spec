@@ -4,7 +4,7 @@
 #
 Name     : neon
 Version  : 2.4.0
-Release  : 30
+Release  : 31
 URL      : https://github.com/NervanaSystems/neon/archive/v2.4.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v2.4.0.tar.gz
 Summary  : No detailed summary available
@@ -84,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1511836419
+export SOURCE_DATE_EPOCH=1511978761
 python3 setup.py build -b py3
 
 %install
