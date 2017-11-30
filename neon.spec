@@ -4,7 +4,7 @@
 #
 Name     : neon
 Version  : 2.4.0
-Release  : 33
+Release  : 34
 URL      : https://github.com/NervanaSystems/neon/archive/v2.4.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v2.4.0.tar.gz
 Summary  : No detailed summary available
@@ -37,6 +37,7 @@ BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : tox
 BuildRequires : virtualenv
+Patch1: Fix-pip3-check-issue.patch
 
 %description
 # neon
@@ -78,13 +79,14 @@ python3 components for the neon package.
 
 %prep
 %setup -q -n neon-2.4.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1512065594
+export SOURCE_DATE_EPOCH=1512065913
 python3 setup.py build -b py3
 
 %install

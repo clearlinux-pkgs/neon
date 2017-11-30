@@ -1,0 +1,42 @@
+From 94537e7ec145617fe6da0f5f5594ac76db36604a Mon Sep 17 00:00:00 2001
+From: Victor Rodriguez <victor.rodriguez.bahena@intel.com>
+Date: Thu, 30 Nov 2017 18:08:46 +0000
+Subject: [PATCH] Fix pip3 check issue
+
+pip3 check look for requirements in
+
+/usr/lib/python3.6/site-packages/nervananeon-2.4.0-py3.6.egg-info/requires.txt
+
+and fail for missing ones , this patch fix this issue
+
+Signed-off-by: Victor Rodriguez <victor.rodriguez.bahena@intel.com>
+---
+ setup.py | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 3d17b55..bb7def3 100755
+--- a/setup.py
++++ b/setup.py
+@@ -77,7 +77,6 @@ requirements = [
+     "funcsigs",
+     "pytest",
+     "pytest-cov",
+-    "pytest-mock",
+     "posix_ipc",
+     "pillow",
+     "pylint",
+@@ -87,10 +86,6 @@ requirements = [
+     "future",
+     "tqdm",
+     "cffi",
+-    "filelock",
+-    "py-cpuinfo",
+-    "pypandoc",
+-    "pandoc"
+ ]
+ 
+ 
+-- 
+2.15.1
+
