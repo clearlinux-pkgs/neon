@@ -4,7 +4,7 @@
 #
 Name     : neon
 Version  : 2.4.0
-Release  : 34
+Release  : 35
 URL      : https://github.com/NervanaSystems/neon/archive/v2.4.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v2.4.0.tar.gz
 Summary  : No detailed summary available
