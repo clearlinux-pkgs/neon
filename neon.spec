@@ -4,7 +4,7 @@
 #
 Name     : neon
 Version  : 2.5.0
-Release  : 37
+Release  : 38
 URL      : https://github.com/NervanaSystems/neon/archive/v2.5.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v2.5.0.tar.gz
 Summary  : No detailed summary available
@@ -14,6 +14,8 @@ Requires: neon-bin
 Requires: neon-python3
 Requires: neon-doc
 Requires: neon-python
+Requires: pep8
+Requires: pylint
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pluggy
@@ -73,7 +75,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1513892137
+export SOURCE_DATE_EPOCH=1513961448
 python3 setup.py build -b py3
 
 %install
