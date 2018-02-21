@@ -1,0 +1,27 @@
+From 2a893efcc3f9e4de00bde25ebcc093f9b9d1523b Mon Sep 17 00:00:00 2001
+From: Gabriel Briones Sayeg <gabriel.briones.sayeg@intel.com>
+Date: Wed, 21 Feb 2018 11:16:23 -0600
+Subject: [PATCH] Removing positional *args from configargparse.ArgumentParser
+ constructor
+
+Signed-off-by: Gabriel Briones Sayeg <gabriel.briones.sayeg@intel.com>
+---
+ neon/util/argparser.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/neon/util/argparser.py b/neon/util/argparser.py
+index 8c1831e..5a90235 100644
+--- a/neon/util/argparser.py
++++ b/neon/util/argparser.py
+@@ -77,7 +77,7 @@ class NeonArgparser(configargparse.ArgumentParser):
+             kwargs['add_config_file_help'] = False
+ 
+         self.defaults = kwargs.pop('default_overrides', dict())
+-        super(NeonArgparser, self).__init__(*args, **kwargs)
++        super(NeonArgparser, self).__init__(**kwargs)
+ 
+         # ensure that default values are display via --help
+         self.formatter_class = configargparse.ArgumentDefaultsHelpFormatter
+-- 
+2.16.1
+

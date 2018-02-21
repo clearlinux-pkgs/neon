@@ -4,18 +4,28 @@
 #
 Name     : neon
 Version  : 2.6.0
-Release  : 40
+Release  : 41
 URL      : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : Apache-2.0 MIT
+License  : Apache-2.0
 Requires: neon-bin
 Requires: neon-python3
 Requires: neon-doc
 Requires: neon-python
+Requires: Sphinx
+Requires: appdirs
+Requires: cffi
+Requires: flake8
+Requires: h5py
+Requires: numpy
 Requires: pep8
+Requires: posix_ipc
 Requires: pylint
+Requires: pytest
+Requires: pytest-cov
+Requires: tqdm
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pluggy
@@ -27,6 +37,7 @@ BuildRequires : setuptools
 BuildRequires : tox
 BuildRequires : virtualenv
 Patch1: Fix-pip3-check-issue.patch
+Patch2: Bugfix-NeonArgParse.patch
 
 %description
 # neon
@@ -69,13 +80,14 @@ python3 components for the neon package.
 %prep
 %setup -q -n neon-2.6.0
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1515207731
+export SOURCE_DATE_EPOCH=1519235786
 python3 setup.py build -b py3
 
 %install
