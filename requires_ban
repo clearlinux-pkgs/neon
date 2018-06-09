@@ -3,3 +3,8 @@ filelock
 py-cpuinfo
 pypandoc
 pandoc
+pytest
+pytest-cov
+pep8
+flake8
+Sphinx
