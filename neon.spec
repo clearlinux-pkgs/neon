@@ -4,7 +4,7 @@
 #
 Name     : neon
 Version  : 2.6.0
-Release  : 44
+Release  : 45
 URL      : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
 Summary  : No detailed summary available
@@ -17,8 +17,10 @@ Requires: appdirs
 Requires: cffi
 Requires: h5py
 Requires: numpy
+Requires: pep8
 Requires: posix_ipc
 Requires: pylint
+Requires: pytest-cov
 Requires: tqdm
 BuildRequires : pbr
 BuildRequires : pip
@@ -81,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528565861
+export SOURCE_DATE_EPOCH=1528643914
 python3 setup.py build -b py3
 
 %install
