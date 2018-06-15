@@ -4,7 +4,7 @@
 #
 Name     : neon
 Version  : 2.6.0
-Release  : 45
+Release  : 46
 URL      : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
 Summary  : No detailed summary available
