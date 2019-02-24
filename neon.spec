@@ -4,44 +4,41 @@
 #
 Name     : neon
 Version  : 2.6.0
-Release  : 52
+Release  : 53
 URL      : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
-Summary  : No detailed summary available
+Summary  : HTTP and WebDAV client library with a C interface
 Group    : Development/Tools
 License  : Apache-2.0
-Requires: neon-bin
-Requires: neon-python3
-Requires: neon-python
-Requires: appdirs
-Requires: cffi
-Requires: h5py
+Requires: neon-bin = %{version}-%{release}
+Requires: neon-license = %{version}-%{release}
+Requires: neon-python = %{version}-%{release}
+Requires: neon-python3 = %{version}-%{release}
+Requires: PyYAML
 Requires: numpy
 Requires: pep8
-Requires: posix_ipc
 Requires: pylint
-Requires: pytest-cov
-Requires: tqdm
-BuildRequires : pbr
-BuildRequires : pip
+BuildRequires : buildreq-distutils3
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
-
-BuildRequires : python3-dev
-BuildRequires : setuptools
 BuildRequires : tox
 BuildRequires : virtualenv
 Patch1: Fix-pip3-check-issue.patch
 Patch2: Bugfix-NeonArgParse.patch
 
 %description
-# neon
-[neon](https://github.com/NervanaSystems/neon) is Intel's reference deep learning framework committed to [best performance](https://github.com/soumith/convnet-benchmarks) on all hardware. Designed for ease-of-use and extensibility.
+###Model
+This is a neural machine translation model based on
+[Sutskever et al. 2014](http://arxiv.org/pdf/1409.3215v3.pdf).
+The model uses a subset of the dataset used in the paper, which is a tokenized, selected
+subset of the WMT14 dataset available from
+[Schwenk 2013](http://www-lium.univ-lemans.fr/~schwenk/cslm_joint_paper/)
 
 %package bin
 Summary: bin components for the neon package.
 Group: Binaries
+Requires: neon-license = %{version}-%{release}
 
 %description bin
 bin components for the neon package.
@@ -55,10 +52,18 @@ Group: Documentation
 doc components for the neon package.
 
 
+%package license
+Summary: license components for the neon package.
+Group: Default
+
+%description license
+license components for the neon package.
+
+
 %package python
 Summary: python components for the neon package.
 Group: Default
-Requires: neon-python3
+Requires: neon-python3 = %{version}-%{release}
 
 %description python
 python components for the neon package.
@@ -83,19 +88,23 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528643914
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1551038369
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
 rm -rf %{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/neon
+cp LICENSE %{buildroot}/usr/share/package-licenses/neon/LICENSE
+cp examples/skip-thought/NOTICE %{buildroot}/usr/share/package-licenses/neon/examples_skip-thought_NOTICE
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
-## make_install_append content
+## install_append content
 mkdir -p %{buildroot}/usr/share/doc/neon
 cp -a examples  %{buildroot}/usr/share/doc/neon
-## make_install_append end
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -106,8 +115,13 @@ cp -a examples  %{buildroot}/usr/share/doc/neon
 /usr/bin/nvis
 
 %files doc
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 %doc /usr/share/doc/neon/*
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/neon/LICENSE
+/usr/share/package-licenses/neon/examples_skip-thought_NOTICE
 
 %files python
 %defattr(-,root,root,-)
