@@ -4,7 +4,7 @@
 #
 Name     : neon
 Version  : 2.6.0
-Release  : 54
+Release  : 55
 URL      : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
 Summary  : HTTP and WebDAV client library with a C interface
