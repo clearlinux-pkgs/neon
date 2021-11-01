@@ -4,10 +4,10 @@
 #
 Name     : neon
 Version  : 2.6.0
-Release  : 70
+Release  : 71
 URL      : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
 Source0  : https://github.com/NervanaSystems/neon/archive/v2.6.0.tar.gz
-Summary  : HTTP and WebDAV client library with a C interface
+Summary  : colorful cui utility
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: neon-bin = %{version}-%{release}
@@ -43,12 +43,8 @@ Patch1: Fix-pip3-check-issue.patch
 Patch2: Bugfix-NeonArgParse.patch
 
 %description
-###Model
-This is a neural machine translation model based on
-[Sutskever et al. 2014](http://arxiv.org/pdf/1409.3215v3.pdf).
-The model uses a subset of the dataset used in the paper, which is a tokenized, selected
-subset of the WMT14 dataset available from
-[Schwenk 2013](http://www-lium.univ-lemans.fr/~schwenk/cslm_joint_paper/)
+# neon
+[neon](https://github.com/NervanaSystems/neon) is Intel's reference deep learning framework committed to [best performance](https://github.com/soumith/convnet-benchmarks) on all hardware. Designed for ease-of-use and extensibility.
 
 %package bin
 Summary: bin components for the neon package.
@@ -88,6 +84,7 @@ python components for the neon package.
 Summary: python3 components for the neon package.
 Group: Default
 Requires: python3-core
+Provides: pypi(neon)
 
 %description python3
 python3 components for the neon package.
@@ -104,12 +101,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583185942
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1635757727
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
