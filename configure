@@ -1,0 +1,6 @@
+--disable-static
+--enable-shared
+--enable-threadsafe-ssl=posix
+--with-expat
+--with-libproxy
+--with-ssl=openssl

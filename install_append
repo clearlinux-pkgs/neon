@@ -1,3 +1,0 @@
-mkdir -p %{buildroot}/usr/share/doc/neon
-cp -a examples  %{buildroot}/usr/share/doc/neon
-

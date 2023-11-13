@@ -1,0 +1,6 @@
+Configure miss: certutil
+Configure miss: pakchois pkg-config data
+Configure miss: pk12util
+Configure miss: wspiapi.h
+Configure miss: wspiapi.h presence
+Configure miss: wspiapi.h usability

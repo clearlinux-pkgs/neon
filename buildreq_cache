@@ -1,0 +1,5 @@
+0.32.5
+expat-dev
+krb5-dev
+libxml2-dev
+pkgconfig(zlib)

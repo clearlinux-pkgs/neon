@@ -1,0 +1,7 @@
+libc.so.6
+libcrypto.so.3
+libexpat.so.1
+libgssapi_krb5.so.2
+libproxy.so.1
+libssl.so.3
+libz.so.1
