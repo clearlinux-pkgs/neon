@@ -1,5 +1,4 @@
-0.32.5
+0.33.0
 expat-dev
+file
 krb5-dev
-libxml2-dev
-pkgconfig(zlib)
